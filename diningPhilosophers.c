@@ -30,25 +30,27 @@ void *philosopher(void *arg){
         int philosopher_num;
         philosopher_num = (unsigned long int) arg;
 
-        // pickup left fork
-        pickup(philosopher_num);
-        printf("philosopher %d picks up the fork %d.\n", philosopher_num, philosopher_num);
+	while(1){
+        	// pickup left fork
+        	pickup(philosopher_num);
+        	printf("philosopher %d picks up the fork %d.\n", philosopher_num, philosopher_num);
 
-        // pickup right fork
-        pickup(philosopher_num + 1);
-        printf("philosopher %d picks up the fork %d.\n", philosopher_num, (philosopher_num + 1) % NUM);
+        	// pickup right fork
+	        pickup(philosopher_num + 1);
+        	printf("philosopher %d picks up the fork %d.\n", philosopher_num, (philosopher_num + 1) % NUM);
 
-        eating(philosopher_num);
+	        eating(philosopher_num);
 
-        // putdown right fork
-        putdown(philosopher_num + 1);
-        printf("philosopher %d puts down the fork %d.\n", philosopher_num, (philosopher_num + 1) % NUM);
+	        // putdown right fork
+	        putdown(philosopher_num + 1);
+        	printf("philosopher %d puts down the fork %d.\n", philosopher_num, (philosopher_num + 1) % NUM);
 
-        // putdown left fork
-        putdown(philosopher_num);
-        printf("philosopher %d puts down the fork %d.\n", philosopher_num, philosopher_num);
-
-        thinking(philosopher_num);
+	        // putdown left fork
+        	putdown(philosopher_num);
+	        printf("philosopher %d puts down the fork %d.\n", philosopher_num, philosopher_num);
+	
+        	thinking(philosopher_num);
+	}
 
         return NULL;
 }
